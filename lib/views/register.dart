@@ -153,13 +153,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   birthDate != null) {
                 switch (_genderRadioBtnVal) {
                   case 0:
-                    genderUpdate = 'male';
+                    genderUpdate = 'Male';
                     break;
                   case 1:
-                    genderUpdate = 'male';
+                    genderUpdate = 'Female';
                     break;
                   case 2:
-                    genderUpdate = 'male';
+                    genderUpdate = 'Other';
                     break;
                 }
                 _register();

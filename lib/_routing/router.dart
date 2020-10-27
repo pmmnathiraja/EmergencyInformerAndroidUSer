@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-//import 'package:user/map/map_laod_bluetooth.dart';
+//import 'package:user/map/map_load_bluetooth.dart';
 import 'package:user/_routing/routes.dart';
 import 'package:user/screens/feed.dart';
 //import 'package:user/serialBluetooth/MainPage.dart';

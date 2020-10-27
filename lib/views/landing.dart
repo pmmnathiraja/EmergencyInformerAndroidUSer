@@ -138,7 +138,7 @@ class _LandingPageState extends State<LandingPage>{
               child: Padding(
                 padding: EdgeInsets.only(left: 10.0),
                 child: Container(
-                  height: 100.0,
+                  height: 200.0,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(

@@ -191,7 +191,7 @@ class _FoodFormState extends State<FoodForm> {
             _showImage(),
             SizedBox(height: 16),
             Text(
-              widget.isUpdating ? "Edit Food" : "Create Food",
+              widget.isUpdating ? "Edit Report" : "Upload Report",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 30),
             ),

@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:user/model/user.dart';
 import 'package:provider/provider.dart';
 import 'package:location/location.dart';
 import 'package:user/serialBluetooth/MainPage.dart';
+import 'package:user/utils/colors.dart';
 
 class LocationService {
   UserLocation _currentLocation;
@@ -62,7 +64,8 @@ class MapLoadBluetooth extends StatelessWidget {
     return StreamProvider<UserLocation>(
       create: (context) => LocationService().locationStream,
       child: MaterialApp(
-          title: 'Flutter Demo',
+          title: 'GET LOCATION',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
@@ -79,6 +82,9 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: primaryColor),
+    );
     var userLocation = Provider.of<UserLocation>(context);
     return Scaffold(
       appBar: AppBar(

@@ -30,7 +30,7 @@ class LoginInit extends StatelessWidget {
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Coding with Curry',
+          title: 'Emergency Informer',
          theme: ThemeData(
         primarySwatch: Colors.blue,
         accentColor: Colors.lightBlue,
