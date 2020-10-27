@@ -331,7 +331,7 @@ class _RegisterPageState extends State<RegisterPage> {
           }
           return null;
         }
-        return _emailValidator != 1
+        return _emailValidator == 1
             ? " This Email is Already used "
             : "Please Enter the Email";
       },
