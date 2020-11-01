@@ -55,7 +55,6 @@ class _LoginState extends State<Login> {
         labelStyle: TextStyle(color: Colors.white54,fontSize: 22),
       ),
       keyboardType: TextInputType.emailAddress,
-      initialValue: 'user@gmail.com',
       style: TextStyle(fontSize: 20, color: Colors.white),
       cursorColor: Colors.white,
       validator: (String value) {
