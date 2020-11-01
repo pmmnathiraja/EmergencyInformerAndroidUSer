@@ -45,18 +45,18 @@ class _FeedState extends State<Feed> {
     }
     print("building Feed");
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          // action button
-          FlatButton(
-            onPressed: () => setupSignOut(_firebaseUser) ,
-            child: Text(
-              "Logout",
-              style: TextStyle(fontSize: 23, color: Colors.white),
-            ),
-          ),
-        ],
-      ),
+//      appBar: AppBar(
+//        actions: <Widget>[
+//          // action button
+//          FlatButton(
+//            onPressed: () => setupSignOut(_firebaseUser) ,
+//            child: Text(
+//              "Logout",
+//              style: TextStyle(fontSize: 23, color: Colors.white),
+//            ),
+//          ),
+//        ],
+//      ),
       body: new RefreshIndicator(
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
@@ -65,7 +65,6 @@ class _FeedState extends State<Feed> {
                 foodNotifier.foodList[index].image != null
                     ? foodNotifier.foodList[index].image
                     : 'https://www.testingxperts.com/wp-content/uploads/2019/02/placeholder-img.jpg',
-                width: 120,
                 fit: BoxFit.fitWidth,
               ),
               title: Text(foodNotifier.foodList[index].name),

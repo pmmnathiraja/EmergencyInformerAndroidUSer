@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:user/api/food_api.dart';
 import 'package:user/map/map_load_bluetooth.dart';
 import 'package:user/model/user.dart';
 import 'package:user/notifier/auth_notifier.dart';
 import 'package:user/screens/feed.dart';
 import 'package:provider/provider.dart';
-
+import 'package:user/views/landing.dart';
 
 class MapViewMain extends StatefulWidget {
-
   @override
   _MapViewMainState createState() => _MapViewMainState();
 }
@@ -32,7 +32,7 @@ class _MapViewMainState extends State<MapViewMain> {
   UserData userPersonalData = UserData();
   int informEmergency = 0;
   int resetData = 0;
-  int resetTextCondition = 0 ;
+  int resetTextCondition = 0;
   String _textString = "Inform Emergency";
   Position currentLocation;
 
@@ -52,7 +52,6 @@ class _MapViewMainState extends State<MapViewMain> {
       }
     });
   }
-
 
   void deleteRequest() {
     FirebaseFirestore.instance
@@ -80,12 +79,12 @@ class _MapViewMainState extends State<MapViewMain> {
     });
   }
 
-  void resetAfterComplete(){
+  void resetAfterComplete() {
     polylineCoordinates.clear();
     markers.clear();
     polyLines.clear();
     resetData = 0;
-    resetTextCondition = 0 ;
+    resetTextCondition = 0;
   }
 
   @override
@@ -118,7 +117,7 @@ class _MapViewMainState extends State<MapViewMain> {
                 _destLatitude = position.latitude;
                 _destLongitude = position.longitude;
 
-               return Scaffold(
+                return Scaffold(
                   body: Stack(
                     children: <Widget>[
                       FutureBuilder(
@@ -162,10 +161,8 @@ class _MapViewMainState extends State<MapViewMain> {
                     ],
                   ),
                 );
-
-              }
-              else {
-                if(resetData != 0 && snapshot.data.data() == null) {
+              } else {
+                if (resetData != 0 && snapshot.data.data() == null) {
                   resetAfterComplete();
                 }
                 return Scaffold(
@@ -267,11 +264,28 @@ class _MapViewMainState extends State<MapViewMain> {
                   }));
                 },
               ),
+              ListTile(
+                title: Text(
+                  'Sign Out',
+                  textScaleFactor: 1.5,
+                ),
+                onTap: () {
+                  setupSignOut(_firebaseUser);
+                },
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  void setupSignOut(User _firebaseUser) {
+    signOut(_firebaseUser);
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return LandingPage();
+    }));
   }
 
   void _onMapCreated(GoogleMapController controller) async {
@@ -283,13 +297,13 @@ class _MapViewMainState extends State<MapViewMain> {
 //      _addMarker(LatLng(_originLatitude, _originLongitude), "origin",
 //          BitmapDescriptor.defaultMarker);
 
-      _addMarker(
-        LatLng(_destLatitude, _destLongitude),
-        "destination",
-        BitmapDescriptor.defaultMarkerWithHue(10),
-      );
-      print("draw polyline");
-      _getPolyline();
+    _addMarker(
+      LatLng(_destLatitude, _destLongitude),
+      "destination",
+      BitmapDescriptor.defaultMarkerWithHue(10),
+    );
+    print("draw polyline");
+    _getPolyline();
   }
 
   _addMarker(LatLng position, String id, BitmapDescriptor descriptor) {
@@ -310,9 +324,9 @@ class _MapViewMainState extends State<MapViewMain> {
 
   _getPolyline() async {
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-        "AIzaSyA8GY4o9vAR6URMqU6c4AE1UGLkfDG8iik",
-        PointLatLng(_originLatitude, _originLongitude),
-        PointLatLng(_destLatitude, _destLongitude),
+      "AIzaSyA8GY4o9vAR6URMqU6c4AE1UGLkfDG8iik",
+      PointLatLng(_originLatitude, _originLongitude),
+      PointLatLng(_destLatitude, _destLongitude),
     );
     polylineCoordinates.clear();
     if (result.points.isNotEmpty) {
