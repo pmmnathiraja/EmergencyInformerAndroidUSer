@@ -28,7 +28,6 @@ class FoodDetail extends StatelessWidget {
                       ? foodNotifier.currentFood.image
                       : 'https://www.testingxperts.com/wp-content/uploads/2019/02/placeholder-img.jpg',
                   width: MediaQuery.of(context).size.width,
-                  height: 400,
                   fit: BoxFit.fitWidth,
                 ),
                 SizedBox(height: 24),
