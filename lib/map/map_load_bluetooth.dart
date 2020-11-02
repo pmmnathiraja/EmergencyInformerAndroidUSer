@@ -88,8 +88,7 @@ class HomeView extends StatelessWidget {
     var userLocation = Provider.of<UserLocation>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Location'),
-        backgroundColor: Colors.indigo,
+        title: Text("YOUR LOCATION"),
       ),
       body: Center(
         child: Text(
