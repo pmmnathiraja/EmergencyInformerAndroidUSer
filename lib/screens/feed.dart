@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:user/api/food_api.dart';
-import 'package:user/model/user.dart';
-import 'package:user/notifier/auth_notifier.dart';
+import 'package:user/app.dart';
 import 'package:user/notifier/food_notifier.dart';
 import 'package:user/screens/detail.dart';
 import 'package:user/screens/food_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user/views/landing.dart';
 
 class Feed extends StatefulWidget {
 //  Feed(this.userSet):super();
@@ -31,7 +29,7 @@ class _FeedState extends State<Feed> {
     signOut(_firebaseUser);
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      return LandingPage();
+      return App();
     }));
   }
   @override
@@ -45,18 +43,18 @@ class _FeedState extends State<Feed> {
     }
     print("building Feed");
     return Scaffold(
-//      appBar: AppBar(
-//        actions: <Widget>[
-//          // action button
-//          FlatButton(
-//            onPressed: () => setupSignOut(_firebaseUser) ,
-//            child: Text(
-//              "Logout",
-//              style: TextStyle(fontSize: 23, color: Colors.white),
-//            ),
-//          ),
-//        ],
-//      ),
+      appBar: AppBar(
+        actions: <Widget>[
+          // action button
+          FlatButton(
+            onPressed: () => setupSignOut(_firebaseUser) ,
+            child: Text(
+              "Logout",
+              style: TextStyle(fontSize: 23, color: Colors.white),
+            ),
+          ),
+        ],
+      ),
       body: new RefreshIndicator(
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
