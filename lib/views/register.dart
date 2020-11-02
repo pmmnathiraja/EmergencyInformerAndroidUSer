@@ -293,7 +293,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       validator: (String value) {
         if (value.isNotEmpty) {
-          if (!isAlpha(_textController.text)) {
+          if (isNumeric(_textController.text)) {
             return 'Please ! fill this using only letters';
           }
           return null;
