@@ -82,13 +82,10 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: primaryColor),
-    );
     var userLocation = Provider.of<UserLocation>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("YOUR LOCATION"),
+        title: Text("                          YOUR LOCATION"),
       ),
       body: Center(
         child: Text(
