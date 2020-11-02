@@ -5,11 +5,14 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:user/api/food_api.dart';
+import 'package:user/app.dart';
+import 'package:user/main.dart';
 import 'package:user/map/map_load_bluetooth.dart';
 import 'package:user/model/user.dart';
 import 'package:user/notifier/auth_notifier.dart';
 import 'package:user/screens/feed.dart';
 import 'package:provider/provider.dart';
+import 'package:user/main.dart';
 import 'package:user/views/landing.dart';
 
 class MapViewMain extends StatefulWidget {
@@ -284,7 +287,7 @@ class _MapViewMainState extends State<MapViewMain> {
     signOut(_firebaseUser);
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      return LandingPage();
+      return App();
     }));
   }
 

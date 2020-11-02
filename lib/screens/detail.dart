@@ -18,6 +18,9 @@ class FoodDetail extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(foodNotifier.currentFood.name),
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Container(
